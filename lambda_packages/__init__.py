@@ -86,5 +86,10 @@ lambda_packages = {
         'version': '2016.8.27',
         'path': os.path.join(os.path.dirname(os.path.abspath(__file__)),
                             'regex', 'regex-2016.8.27.tar.gz')
+    },
+    'tensorflow': {
+        'version': '1.1.0',
+        'path': os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             'tensorflow', 'tensorflow-1.1.tar.gz')
     }
 }
