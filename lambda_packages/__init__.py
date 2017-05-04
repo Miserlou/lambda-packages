@@ -65,6 +65,13 @@ lambda_packages = {
                                  'numpy', 'python2.7-numpy-1.10.4.tar.gz')
         }
     },
+    'pandas': {
+        'python2.7': {
+            'version': '0.19.2',
+            'path': os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 'pandas', 'python2.7-pandas-0.19.2.tar.gz')
+        }
+    },
     'Pillow': {
         'python2.7': {
             'version': '3.4.2',
