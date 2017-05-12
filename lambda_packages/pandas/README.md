@@ -1,3 +1,3 @@
 ##Build
 
-`./build.sh cryptography 1.4`
+`./build.sh pandas 0.19.2`
