@@ -1,7 +1,7 @@
 # psycopg2
 
 postgreSQL 9.5.1
-psycopg2 2.6.1
+psycopg2 python2.7: 2.6.1 and python3.6: 2.7.1
 
 Instructions (via [jkehler](https://github.com/jkehler/awslambda-psycopg2)):
 
