@@ -77,6 +77,13 @@ lambda_packages = {
                                  'Pillow', 'python2.7-Pillow-3.4.2.tar.gz')
         }
     },
+    'paramiko': {
+        'python2.7': {
+            'version': '2.2.1',
+            'path': os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 'paramiko', 'python2.7-paramiko-2.2.1.tar.gz')
+        }
+    },
     'psycopg2': {
         'python2.7': {
             'version': '2.6.1',

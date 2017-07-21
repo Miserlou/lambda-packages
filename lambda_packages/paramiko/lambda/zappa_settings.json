@@ -1,0 +1,9 @@
+{
+    "test": {
+        "project_name": "Paramiko-Test",
+        "lambda_description": "",
+        "app_function": "app.test",
+        "apigateway_enabled": false,
+        "keep_warm": false
+    }
+}
