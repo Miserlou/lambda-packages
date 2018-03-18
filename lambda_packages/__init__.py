@@ -162,6 +162,16 @@ lambda_packages = {
             'path': os.path.join(PACKAGES_DIR, 'regex', 'python3.6-regex-2016.8.27.tar.gz')
         }
     },
+    'rtree': {
+        'python2.7': {
+            'version': '0.8.3',
+            'path': os.path.join(PACKAGES_DIR, 'rtree', 'python2.7-rtree-0.8.3.tar.gz')
+        },
+        'python3.6': {
+            'version': '0.8.3',
+            'path': os.path.join(PACKAGES_DIR, 'rtree', 'python3.6-rtree-0.8.3.tar.gz')
+        }
+    },
     'sqlite3': {
         'python3.6': {
             'version': '3.6.0',

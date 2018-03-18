@@ -27,6 +27,7 @@ Currently includes (at least Python 2.7) support for:
 * python-ldap
 * python-Levenshtein
 * regex
+* Rtree
 * SQLite
 * xmlsec
 
