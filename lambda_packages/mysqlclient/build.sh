@@ -62,6 +62,9 @@ function build_package {
 
     TMP_DIR="${PYTHON}_${PACKAGE}_${VERSION}"
 
+    if [ -d ${TMP_DIR} ]; then
+        rm -rf ${TMP_DIR}
+    fi
     mkdir ${TMP_DIR}
     cd  ${TMP_DIR}
 
@@ -88,8 +91,8 @@ function build_package {
 
     echo "install pips"
     TARGET_DIR=${ENV}/packaged
-    echo ${PIP} install --verbose --use-wheel --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
-    ${PIP} install --verbose --use-wheel --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
+    echo ${PIP} install --verbose --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
+    ${PIP} install --verbose --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
     deactivate
 
     TARGET_DIR=${ENV}/packaged
