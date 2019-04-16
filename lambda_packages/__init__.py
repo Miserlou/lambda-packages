@@ -27,7 +27,7 @@ lambda_packages = {
         },
         'python3.7': {
             'version': '2.6.1',
-            'path': os.path.join(PACKAGES_DIR, 'cryptography', 'python3.6-cryptography-2.6.1.tar.gz')
+            'path': os.path.join(PACKAGES_DIR, 'cryptography', 'python3.7-cryptography-2.6.1.tar.gz')
         }
     },
     'cv2': {
