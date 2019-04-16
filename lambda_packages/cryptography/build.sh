@@ -8,14 +8,15 @@
 # with --docker (you need docker installed and network access to reach lambci's
 # docker-lambda image).
 #
-# Defaults to building both python2.7 and python3.6 packages. If you only want
-# one of them use either --py2-only or --py3-only.
+# Defaults to building python2.7, python3.6 and python 3.7 packages. If you only want
+# one of them use --py2.7-only or --py3.6-only or --py3.7-only.
 #
 set -e
 
 DOCKER=0
-PY2=1
-PY3=1
+PY27=1
+PY36=1
+PY37=1
 SUDO=sudo
 
 while [[ $# -gt 2 ]]
@@ -28,14 +29,22 @@ case $key in
         SUDO=""
         shift
         ;;
-    --py2-only)
-        PY2=1
-        PY3=0
+    --py2.7-only)
+        PY27=1
+        PY36=0
+        PY37=0
         shift
         ;;
-    --py3-only)
-        PY2=0
-        PY3=1
+    --py3.6-only)
+        PY27=0
+        PY36=1
+        PY37=0
+        shift
+        ;;
+    --py3.7-only)
+        PY27=0
+        PY36=0
+        PY37=1
         shift
         ;;
     *)
@@ -48,8 +57,9 @@ PACKAGE=${1}
 VERSION=${2}
 
 echo DOCKER          = "${DOCKER}"
-echo PY2             = "${PY2}"
-echo PY3             = "${PY3}"
+echo PY27            = "${PY27}"
+echo PY36            = "${PY36}"
+echo PY37            = "${PY37}"
 echo PACKAGE         = "${PACKAGE}"
 echo VERSION         = "${VERSION}"
 
@@ -73,6 +83,8 @@ function build_package {
     if [ "${VIRTUALENV}" == "virtualenv" ]; then
         ${SUDO} ${PIP} install virtualenv
     fi
+
+    echo `${PYTHON} --version`
     
     echo "make virtualenv"
     ENV="env-${PYTHON}-${PACKAGE}-${VERSION}"
@@ -98,10 +110,14 @@ function build_package {
     rm -r ${TMP_DIR}
 }
 
-if [ ${PY2} == 1 ]; then
+if [ ${PY27} == 1 ]; then
     build_package ${PACKAGE} ${VERSION} python2.7 pip virtualenv
 fi
 
-if [ ${PY3} == 1 ]; then
+if [ ${PY36} == 1 ]; then
     build_package ${PACKAGE} ${VERSION} python3.6 pip3.6 "python3.6 -m venv "
+fi
+
+if [ ${PY37} == 1 ]; then
+    build_package ${PACKAGE} ${VERSION} python3.7 pip3.7 "python3.7 -m venv "
 fi
