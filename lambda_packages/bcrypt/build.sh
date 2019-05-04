@@ -32,7 +32,7 @@ echo 'install-purelib=$base/lib64/python' >> ./setup.cfg
 
 TARGET_DIR=${ENV}/packaged
 echo "install pips"
-pip install --verbose --use-wheel --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
+pip install --verbose --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
 deactivate
 
 cd ${TARGET_DIR} && tar -zcvf ../../../${PACKAGE}-${VERSION}.tar.gz * && cd ../../..

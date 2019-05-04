@@ -99,8 +99,8 @@ function build_package {
 
     echo "install pips"
     TARGET_DIR=${ENV}/packaged
-    echo ${PIP} install --verbose --use-wheel --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
-    ${PIP} install --verbose --use-wheel --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
+    echo ${PIP} install --verbose --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
+    ${PIP} install --verbose --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
     deactivate
 
     TARGET_DIR=${ENV}/packaged

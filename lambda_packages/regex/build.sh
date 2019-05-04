@@ -39,7 +39,7 @@ echo "activate env in `pwd`"
 source env/bin/activate
 
 echo "install pips"
-pip install --verbose --use-wheel pillow
+pip install --verbose pillow
 deactivate
 
 echo "tar lib and lib64"

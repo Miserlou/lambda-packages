@@ -15,7 +15,7 @@ The EC2 instance will need the correct IAM role to perform this action.
 
 ##Build
 
-Report from `pip install --verbose --use-wheel pillow`
+Report from `pip install --verbose pillow`
 
 ```
 
