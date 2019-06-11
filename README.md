@@ -29,6 +29,7 @@ Currently includes (at least Python 2.7) support for:
 * regex
 * SQLite
 * xmlsec
+* sasl
 
 This project is intended for use by [Zappa](https://github.com/Miserlou/Zappa), but could also be used by any Python/Lambda project.
 
@@ -55,6 +56,25 @@ print lambda_packages['psycopg2']
 #        'path': '<absolute-local-path>/lambda_packages/psycopg2/python2.7-psycopg2-2.6.1.tar.gz'
 #    }
 #}
+```
+
+## SASL library
+
+If PyHive (https://github.com/dropbox/PyHive) package is used (or any other library that uses sasl package) in lambda deployed with Zappa it will fail since PyHive uses C++ libraries which must be compiled with proper CXX flags. To help with this lambda_packages includes Sasl package compiled on AWS EC2 machine for Python 3.6 which includes all needed C++ dependencies.
+Additional libs are:
+
+- libanonymous.so.2.0.23
+- libcrammd5.so.2.0.23
+- libdigestmd5.so.2.0.23
+- libgssapiv2.so.2.0.23
+- liblogin.so.2.0.23
+- libplain.so.2.0.23
+- libsasldb.so.2.0.23
+
+All are placed in `./lib` folder and to use them your lambda should set `SASL_PATH` env variable like so:
+
+```
+os.environ['SASL_PATH'] = os.path.join(os.getcwd(), 'lib')
 ```
 
 ## Contributing

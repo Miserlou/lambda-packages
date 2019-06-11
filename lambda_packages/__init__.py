@@ -181,5 +181,11 @@ lambda_packages = {
             'version': '1.0.9',
             'path': os.path.join(PACKAGES_DIR, 'xmlsec', 'python3.6-xmlsec-1.0.9.tar.gz')
         }
+    },
+    'sasl': {
+        'python3.6': {
+            'version': '0.2.1',
+            'path': os.path.join(PACKAGES_DIR, 'sasl', 'python3.6-sasl-0.2.1.tar.gz')
+        }
     }
 }
