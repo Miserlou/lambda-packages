@@ -23,6 +23,7 @@ Currently includes (at least Python 2.7) support for:
 * psycopg2
 * PyCrypto
 * PyNaCl
+* pyodbc
 * pyproj
 * python-ldap
 * python-Levenshtein
