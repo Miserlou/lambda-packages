@@ -70,17 +70,12 @@ function build_package {
     ${SUDO} yum update -y
     ${SUDO} yum groupinstall -y "Development Tools"
     ${SUDO} yum install -y libffi libffi-devel openssl openssl-devel
-    if [ "${VIRTUALENV}" == "virtualenv" ]; then
-        ${SUDO} ${PIP} install virtualenv
-    fi
-    
-    echo "make virtualenv"
+
     ENV="env-${PYTHON}-${PACKAGE}-${VERSION}"
-    echo ${VIRTUALENV} "${ENV}"
-    ${VIRTUALENV} "${ENV}"
+    echo "make ${ENV}"
+    virtualenv "${ENV}" --python=${PYTHON}
 
     echo "activate env in `pwd`"
-    echo source "${ENV}/bin/activate"
     source "${ENV}/bin/activate"
 
     # https://github.com/pypa/pip/issues/3056
