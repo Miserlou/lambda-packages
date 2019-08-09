@@ -106,6 +106,10 @@ lambda_packages = {
         'python3.6': {
             'version': '2.6.1',
             'path': os.path.join(PACKAGES_DIR, 'pycrypto', 'python3.6-pycrypto-2.6.1.tar.gz')
+        },
+        'python3.7': {
+            'version': '2.6.1',
+            'path': os.path.join(PACKAGES_DIR, 'pycrypto', 'python3.7-pycrypto-2.6.1.tar.gz')
         }
     },
     'pylibmc': {
