@@ -1,12 +1,14 @@
 #!/bin/bash
 
-PACKAGE=${1}
-VERSION=${2}
-RUNTIME=${3:-python2.7}
+set -euxo pipefail
+
+PACKAGE="${1}"
+VERSION="${2}"
+RUNTIME="${3:-python2.7}"
 TMP_DIR="${RUNTIME}_${PACKAGE}_${VERSION}"
 
-mkdir ${TMP_DIR}
-cd  ${TMP_DIR}
+mkdir "${TMP_DIR}"
+cd "${TMP_DIR}" || exit
 echo "Packaging ${PACKAGE}"
 
 echo "do update"
@@ -33,11 +35,11 @@ echo 'install-purelib=$base/lib64/python' >> ./setup.cfg
 
 TARGET_DIR=${ENV}/packaged
 echo "install pips"
-pip install --verbose --use-wheel --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
+pip install --verbose --no-dependencies --target ${TARGET_DIR} "${PACKAGE}==${VERSION}"
 deactivate
 
-cp `rpm -ql xmlsec1 | grep "libxmlsec1.so.1$"` ${TARGET_DIR}
-cp `rpm -ql xmlsec1-openssl | grep "libxmlsec1-openssl.so$"` ${TARGET_DIR}
+cp `rpm -ql xmlsec1 | grep "libxmlsec1.so*"` "${TARGET_DIR}"
+cp `rpm -ql xmlsec1-openssl | grep "libxmlsec1-openssl.so*"` "${TARGET_DIR}"
 
-cd ${TARGET_DIR} && tar -zcvf ../../../${RUNTIME}-${PACKAGE}-${VERSION}.tar.gz * && cd ../../..
-rm -rf ${TMP_DIR}
+cd "${TARGET_DIR}" && tar -zcvf ../../../${RUNTIME}-${PACKAGE}-${VERSION}.tar.gz * && cd ../../..
+rm -rf "${TMP_DIR}"
